@@ -1,0 +1,52 @@
+<!DOCTYPE html>  
+<html lang="en">   
+<body> 
+
+<h2>Search</h2>
+<form action="{% url 'search'%}" method="POST">
+{% csrf_token %}
+<label>Name: </label><br>
+<input type="text" name="name"><br>
+<label>Cuision type: </label><br>
+<input type="text" name="cuision_type"><br>
+<label>Address: </label><br>
+<input type="text" name="address"><br>
+<input type="submit" value="submit">
+</form>  
+
+
+<h3>Search By Dish Type</h3>
+<form action="{% url 'recommend'%}" method="POST">
+{% csrf_token %}
+<label>Dish Type: </label><br>
+<input type="text" name="dish_type"><br>
+<input type="submit" value="submit">
+</form>  
+
+<h3>Search By Price</h3>
+<form action="{% url 'price_re'%}" method="POST">
+{% csrf_token %}
+<label>Dish Price: </label><br>
+<input type="text" name="price"><br>
+<input type="submit" value="submit">
+</form> 
+
+{% if res_list %}
+    <ul>
+    {% for restaurant in res_list %}
+
+        <td>  
+            <li><a href="{% url 'detail' restaurant.res_ID %}">{{ restaurant.name }}</a></li> 
+            <a href="{% url 'edit' restaurant.res_ID %}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+            <a href="{% url 'delete' restaurant.res_ID %}">Delete</a>  
+        </td> 
+    {% endfor %}
+    </ul>
+    <center><a href="{% url 'insert' %}" class="btn btn-primary">Add New Record</a></center> 
+
+{% else %}
+    <p>No restaurant are available.</p>
+{% endif %}
+
+</body>  
+</html>

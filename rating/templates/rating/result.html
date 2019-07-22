@@ -1,0 +1,11 @@
+{% if res_list %}
+    <ul>
+    {% for r in res_list %}
+        <p class="text-secondary"> Dish Category:{{r}}</p>
+
+    {% endfor %}
+    </ul>
+
+{% else %}
+    <p>No restaurant are available.</p>
+{% endif %}

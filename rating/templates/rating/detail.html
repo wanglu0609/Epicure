@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" >
+    <body>  
+
+	<div class="content-section">
+	  <div class="restaurant">
+	    <div class="restaurant-info">
+	      <h2 class="account-heading">{{res_list.name}}</h2>
+	      <p class="text-secondary"> Price:{{res_list.Price_Range}}</p>
+	      <p class="text-secondary"> Cuisine Type:{{res_list.Cuisine_Type}}
+	      </p>
+	      <p class="text-secondary"> Phone:{{res_list.Phone}}</p>
+	      <p class="text-secondary"> Address:{{res_list.Address}}</p>
+	      <p class="text-secondary"> Hours:{{res_list.Hours_Start}} - {{res_list.Hours_End}}</p>
+	    </div>
+	  </div>
+	  
+	</div>
+    <h3 class="account-heading">Menu</h3>
+
+	{% for r in menu %}
+	    <p class="text-secondary"> Dish Category:{{r.dish_type}}   Name:{{r.name}}    Price:${{r.price}}</p>
+    {% endfor %}
+</body>  
+</html>

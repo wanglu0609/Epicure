@@ -1,0 +1,42 @@
+<!DOCTYPE html>  
+<html lang="en">   
+<body>  
+<form method="POST" class="post-form" action="{% url 'update' restaurant.res_ID %}">  
+        {% csrf_token %}  
+    <div class="container">  
+<br>  
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <h3>Update Details</h3>  
+    </div>  
+  </div>  
+ 
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Restaurant Name:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="name" id="id_ename" required maxlength="100" value="{{ restaurant.name }}" />  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Restaurant Phone:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="Phone" id="id_ephone" required maxlength="20" value="{{ restaurant.Phone }}" />  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Restaurant Address:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="Address" id="id_econtact" required maxlength="254" value="{{ restaurant.Address }}" />  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <button type="submit" class="btn btn-success">Update</button>  
+    </div>  
+  </div>  
+    </div>  
+</form>  
+</body>  
+</html>  
