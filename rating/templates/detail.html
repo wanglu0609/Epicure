@@ -1,0 +1,109 @@
+{% extends "header.html" %}<!-- extend some templates -->
+{% block content %}
+    <div class="content-section">
+      <div class="restaurant">
+        {% if user.is_authenticated %}
+        {% if flag %}
+            <div class="restaurant-rating">
+                <center><a class="waves-effect grey btn">visited</a></center>
+            </div>
+        {% else %}
+            <div class="visited">
+                <center><a href="{% url 'user:visit' res_list.res_ID %}" class="btn btn-primary">visited</a></center>
+            </div>
+        {% endif %}
+        {% endif %}
+        <center><p>{{res_list.number_of_visit}} people has visited this restaurant.</p></center>
+        <div class="restaurant-info">
+          <h3 class="account-heading">{{res_list.name}}</h3>
+          <p class="text-secondary"> Price Level(1-3):{{res_list.Price_Range}}</p>
+          <p class="text-secondary"> Cuisine Type:{{res_list.Cuisine_Type}}
+          </p>
+          <p class="text-secondary"> Phone:{{res_list.Phone}}</p>
+          <p class="text-secondary"> Address:{{res_list.Address}}</p>
+          <p class="text-secondary"> Hours:{{res_list.Hours_Start}}:00 - {{res_list.Hours_End}}:00</p>
+
+        </div>
+      </div>
+      
+    </div>
+    <h3 class="account-heading">Menu</h3>
+
+
+    <html>
+        <head>
+            <style>
+                table {
+                    font-family: arial, sans-serif, font-size=1;
+                    border-collapse: collapse;
+                    width: 100%;
+                }
+            
+            td, th {
+                text-align: left;
+                padding: 8px;
+            }
+            
+            </style>
+        </head>
+        <body>
+            
+            <table>
+                <tr>
+                    <th>Dish Category</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Review</th>
+                {% for r in menu %}
+                </tr>
+                <tr>
+                    
+                    <td>{{r.dish_type}}</td>
+                    <td>{{r.name}}</td>
+                    <td>{{r.price}}</td>
+                    <td><a href="{% url 'user:review' dish_id=r.dish_id res_ID=res_list.res_ID %}"><span style="left: 2em;" class="glyphicon glyphicon-pencil">Write a Review</span></a> </td>
+                    
+                </tr>
+                {% endfor %}
+            </table>
+            
+        </body>
+    </html>
+
+    <h3 class="account-heading">Recent Review</h3>
+    <p>Average Rating: {{rate}} </p>
+    <html><head>
+        <style>
+            table {
+                font-family: arial, sans-serif, font-size=1;
+                border-collapse: collapse;
+                width: 100%;
+            }
+        td, th {
+            text-align: left;
+            padding: 8px;
+            width: 25% ;
+        }
+        </style>
+        </head><body>
+            
+        <table>
+            <tr>
+                <th>Dish Name</th>
+                <th>Rating</th>
+                <th>Review</th>
+            
+            {% for r in review %}
+            </tr>
+            <tr>
+                <td>{{r.0}}</td>
+                <td>{{r.1}}</td>
+                <td>{{r.2}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+            
+        </body>
+    </html>
+{% endblock content %}
+

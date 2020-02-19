@@ -1,0 +1,81 @@
+{% extends "header.html" %}<!-- extend some templates -->
+{% block content %}
+
+
+	<div class="content-section">
+	  <div class="user" >
+
+	    <div class="user-info" style="left;">
+	      <h2 class="account-heading">{{profile.FirstName}}</h2>
+	      <p class="text-secondary"> Major:{{profile.Major}}</p>
+	      <p class="text-secondary"> Gender:{{profile.Gender}}
+	      </p>
+	      <p class="text-secondary"> Favorite Cuision:{{profile.Favorite_Cuision}}</p>
+	      <p class="text-secondary"> Favorite Restaurant:{{profile.Favorite_Restaurant}}</p>
+
+	    </div>
+
+	    <div class="friend-info" style="right;">
+	      <h4 class="account-heading">Friends of {{profile.FirstName}}</h2>
+
+			<ul>
+				
+			    {% for f in friends %}
+
+			        <p class="text-secondary">{{f.0}}</p>
+
+			    {% endfor %}
+			</ul>
+
+	    </div>
+
+	    <center><a href="{% url 'user:recommend_friend' %}" class="btn btn-primary">Recommend Friend</a></center> 
+
+	    <div class="review">
+	      <h4 class="account-heading">My Review</h2>
+			<html><head>
+		        <style>
+		            table {
+		                font-family: arial, sans-serif, font-size=1;
+		                border-collapse: collapse;
+		                width: 100%;
+		            }
+		        td, th {
+		            text-align: left;
+		            padding: 8px;
+		            width: 21%;
+		        }
+		        </style>
+		        </head><body>
+		            
+		        <table>
+		            <tr>
+		            	<th>Restaurant</th>
+		                <th>Dish Name</th>
+		                <th>Rating</th>
+		                <th>Comment</th>
+		                <th>Edit Your Review</th>
+		            
+		            {% for r in review %}
+		            </tr>
+		            <tr>
+		                <td>{{r.0}}</td>
+		                <td>{{r.1}}</td>
+		                <td>{{r.2}}</td>
+		                <td>{{r.3}}</td>
+		                <td><a href="{% url 'user:edit_review' review_id=r.4 %}"><span style="left: 2em;" class="glyphicon glyphicon-pencil">Edit your Review</span></a> </td>
+		            </tr>
+		            {% endfor %}
+		        </table>
+		            
+		        </body>
+		    </html>
+
+	    </div>
+
+	  </div>
+
+
+	  
+	</div>
+{% endblock content %}

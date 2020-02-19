@@ -1,0 +1,51 @@
+{% extends "header.html" %}<!-- extend some templates -->
+{% block content %}
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 33%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+</style>
+
+
+{% if res_list %}
+    <ul>
+    <div class="row">
+    {% for restaurant in res_list %}
+    <div class="column">
+        <td>  
+            <li><a href="{% url 'rating:detail' restaurant.res_ID %}">{{ restaurant.name }}</a> 
+                <br>
+                <img src= {{restaurant.image.url}} width="250" height="250">
+                <br>
+                <div>
+                    <a href="{% url 'rating:delete' restaurant.res_ID %}">Delete</a>
+                    <a href="{% url 'rating:edit' restaurant.res_ID %}"><span style="margin-left: 2em;" class="glyphicon glyphicon-pencil">Edit</span></a> 
+                </div>
+            </li> 
+        </td> 
+      </div>
+    {% endfor %}
+    </div>
+    </ul>
+    <center><a href="{% url 'rating:insert' %}" class="btn btn-primary">Add New Record</a></center> 
+
+{% else %}
+    <p>No restaurant are available.</p>
+{% endif %}
+
+{% endblock content %}

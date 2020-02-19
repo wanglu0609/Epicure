@@ -1,0 +1,36 @@
+{% extends "header.html" %}<!-- extend some templates -->
+
+
+{% block content %}
+
+<style>
+html{
+  background:url(https://images.unsplash.com/photo-1488477181946-6428a0291777?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&dl=karly-gomez-lK1Q5RyD6tc-unsplash.jpg) no-repeat center center fixed;
+  -webkit-background-size:cover;
+  -moz-background-size:cover;
+  -o-background-size:cover;
+  background-size:cover;
+}
+</style>
+
+
+  <div class="row">
+    <div class="col s12 m6 l8">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+		  <form method="POST">
+		    {% csrf_token %}
+		    {{form.as_p}}
+		    <!-- p stands for paragraph -->
+
+		    <button class="btn" style="background-color:yellow; color:blue" type="submit">register</button>
+		  </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+   &nbsp;  &nbsp; If you already have an account, <a href="/login"><strong>login</strong></a> instead.
+  <!-- next we need view to point to this html page, so let's edit views.py now -->
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "header.html" %}<!-- extend some templates -->
+{% block content %}
+<form method="POST" class="post-form" action="{% url 'user:edit_review' review.id %}">  
+        {% csrf_token %}  
+    <div class="container">  
+<br>  
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <h3>Update Review</h3>  
+    </div>  
+  </div>  
+ 
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Rating:</label>  
+    <div class="col-sm-4">  
+        <input type="number" name="rating" id="id_rate" value="{{ review.rating }}" />  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Comment:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="comment" id="id_comment" required maxlength="100" value="{{ review.comment }}" />  
+    </div>  
+ 
+  
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <button type="submit" class="btn btn-success">Update</button>  
+    </div>  
+  </div>  
+    </div>  
+</form>  
+{% endblock content %}

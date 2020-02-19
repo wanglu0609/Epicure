@@ -1,0 +1,125 @@
+{% extends "header.html" %}<!-- extend some templates -->
+{% block content %}
+
+<style>
+.slidecontainer {
+  width: 50%;}
+.slider{height:0px;}
+.slider li{height: 0px;}
+#widget-block{margin-top:0px;}
+</style>
+
+<style>
+html{
+  background:url(https://images.unsplash.com/photo-1488477181946-6428a0291777?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&dl=karly-gomez-lK1Q5RyD6tc-unsplash.jpg) no-repeat center center fixed;
+  -webkit-background-size:cover;
+  -moz-background-size:cover;
+  -o-background-size:cover;
+  background-size:cover;
+}
+</style>
+
+<form method="POST" class="post-form" action="{% url 'user:information' %}">  
+        {% csrf_token %}  
+    <div class="container">  
+<br>  
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <h3>Update User Profile</h3>  
+    </div>  
+  </div>  
+ 
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">First Name:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="FirstName" id="id_ename" required maxlength="100" value="{{ information.FirstName }}" />  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Major:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="Major" id="id_Major" required maxlength="20" value="{{ information.Major }}" />  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Gender:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="Gender" id="id_Gender" required maxlength="20" value="{{ information.Gender }}" />  
+    </div>  
+  </div>
+  
+  <div>  
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Favorite Cuision:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="Favorite_Cuision" id="id_Favorite_Cuision" required maxlength="20" value="{{ information.Favorite_Cuision }}" />  
+    </div>  
+  </div>
+
+  <div>
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Favorite Restaurant:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="Favorite_Restaurant" id="id_Favorite_Restaurant" required maxlength="20" value="{{ information.Favorite_Restaurant }}" />  
+    </div>  
+  </div>
+
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+
+<!--     <h5>Enter Your Recommendation Preference</h5> 
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div class="slidecontainer">
+      <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+      <p>Value: <span id="visit"></span></p>
+    </div>
+
+    <div class="slidecontainer">
+      <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+      <p>Value: <span id="duration"></span></p>
+    </div>
+
+    <div class="slidecontainer">
+      <input type="range" min="1" max="100" value="50" class="slider" id="rating_out">
+      <p>Value: <span id="rating"></span></p>
+    </div>
+
+
+    <div class="slidecontainer">
+      <input type="range" min="1" max="100" value="50" class="slider" id="price_out">
+      <p>Value: <span id="price"></span></p>
+    </div>
+
+    <script>
+      
+    var slider = document.getElementById("price_out");
+    var output = document.getElementById("price");
+    output.innerHTML = slider.value;
+    slider.oninput = function() {
+      output.innerHTML = this.value;
+    }
+    </script>
+    
+    <script>
+
+    var slider = document.getElementById("rating_out");
+    var output = document.getElementById("rating");
+    output.innerHTML = slider.value;
+    slider.oninput = function() {
+      output.innerHTML = this.value;
+    }
+    </script> -->
+
+    
+    <button type="submit" class="btn btn-success">Update</button>  
+    </div>  
+  </div>  
+
+    </div>  
+</form>  
+
+
+{% endblock content %}

@@ -1,15 +1,14 @@
-<!DOCTYPE html>  
-<html lang="en">   
-<body> 
+{% extends "header.html" %}<!-- extend some templates -->
+{% block content %}
     
-<form method="POST" class="post-form" action="{% url 'res' %}">  
+<form method="POST" class="post-form" action="{% url 'rating:res' %}">  
         {% csrf_token %}  
     <div class="container">  
 <br>  
     <div class="form-group row">  
     <label class="col-sm-1 col-form-label"></label>  
     <div class="col-sm-4">  
-    <h3>Enter Details</h3>  
+    <h4>Enter Details</h4>  
     </div>  
   </div> 
 
@@ -35,14 +34,20 @@
      <input type="number" id="id_ID" name="res_ID">
     </div> 
 
+<!--     <div class="form-group row"> 
+      <label for="name">Choose a profile picture:</label>
+      <br>
+      <input type="file" name="image" accept="image/*">
+    </div>  -->
  
     <div class="form-group row">  
     <label class="col-sm-1 col-form-label"></label>  
     <div class="col-sm-4">  
     <button type="submit" class="btn btn-primary">Submit</button>  
-    </div>  
+    </div> 
+
+
   </div>  
     </div>  
 </form> 
-</body>  
-</html>
+{% endblock content %}

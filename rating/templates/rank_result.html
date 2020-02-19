@@ -1,0 +1,15 @@
+{% extends "header.html" %}<!-- extend some templates -->
+{% load rating_extras %}
+
+{% block content %}
+	<h5>Ranking Result</h5>
+    <ul>
+    {% for key, val in score %}
+	    
+        <li>score: {{val}} &nbsp;  &nbsp;  &nbsp; <a href="{% url 'rating:detail' key %}">{{name|keyvalue:key}}</a> 
+
+
+    {% endfor %}
+    </ul>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "header.html" %}<!-- extend some templates -->
+{% block content %}
+{% load rating_extras %}
+
+{% if user.is_authenticated %}
+<!-- <div style="width:300px; height:auto; float:left; display:inline">AAAA</div> 
+<div style="width:300px; height:auto; float:left; display:inline">BBBB</div> -->
+
+  <div style="float: left;">
+
+	<h5>Ranking based on your profile and preference</h5>
+	    <ul>
+	    {% for key, val in score %}
+		    
+	        <li>score: {{val}} &nbsp;  &nbsp;  &nbsp; <a href="{% url 'rating:detail' key %}">{{name|keyvalue:key}}</a> 
+
+	    {% endfor %}
+	    </ul> 
+  </div>
+
+  <div style="float: right;">
+
+	<h6>Enter perfered weight for ranking</h6>
+	<form action="{% url 'rating:person_rank'%}" method="POST">
+	{% csrf_token %}
+	<label>Rating(0 to 1): </label><br>
+	<input type="number" step="any" name="G3" value="{{ W3 }}"><br>
+	<label>Duration of Openning(0 to 1): </label><br>
+	<input type="number" step="any" name="G4" value="{{ W4 }}"><br>
+	<label>Total Visit(0 to 1): </label><br>
+	<input type="number" step="any" name="G2" value="{{ W2 }}"><br>
+	<label>Price Level(0 to 1): </label><br>
+	<input type="number" step="any" name="G1" value="{{ W1 }}"><br>
+
+	<input type="submit" value="submit">
+	</form>  
+  </div>
+
+{% else %}
+    <h5>Please Login to See result</h5>
+
+{% endif %}
+
+{% endblock content %}

@@ -1,7 +1,6 @@
-<!DOCTYPE html>  
-<html lang="en">   
-<body>  
-<form method="POST" class="post-form" action="{% url 'update' restaurant.res_ID %}">  
+{% extends "header.html" %}<!-- extend some templates -->
+{% block content %}
+<form method="POST" class="post-form" action="{% url 'rating:update' restaurant.res_ID %}">  
         {% csrf_token %}  
     <div class="container">  
 <br>  
@@ -38,5 +37,4 @@
   </div>  
     </div>  
 </form>  
-</body>  
-</html>  
+{% endblock content %}

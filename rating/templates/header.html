@@ -1,0 +1,55 @@
+<head>
+{% load static %}
+<link href="{% static 'tiny/css/prism.css' %}" rel="stylesheet">
+<!-- Compiled and minified CSS -->
+
+<link href="{% static 'rating/materialize.css' %}" rel="stylesheet">
+<link href="{% static 'rating/style.css' %}" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</head>
+
+<body>
+
+    {% include "messages.html" %}
+
+  <nav>
+      <div class="nav-wrapper">
+        <a href="{% url 'rating:homepage' %}" class="brand-logo"> &nbsp;  &nbsp; Epicures</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="{% url 'rating:advanceSearch' %}">Advance Search</a></li>
+          <li><a href="{% url 'rating:index' %}">Restaurants</a></li>
+
+            {% if user.is_authenticated %}
+              <li><a href="{% url 'user:information' %}">Information</a></li>
+              <li><a href="{% url 'user:profile' %}">{{user.get_username}}</a></li>
+              <li><a href="{% url 'user:logout' %}">Log Out</a></li>
+
+            {% else %}
+              <li><a href="{% url 'user:register' %}">Register</a></li>
+              <li><a href="{% url 'user:login' %}">Log In</a></li>
+            {% endif %}
+
+<!--   <div class="search-container">
+    <form action="/action_page.php">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div> -->
+
+        </ul>
+      </div>
+  </nav>
+
+<p class="small">
+ &nbsp;
+</p>
+<div class="container">
+<!-- with the container, our register is not on the left anymore -->
+{% block content %}
+{% endblock %}
+</div>
+</body>
+
+<script src="{% static 'tinymce/js/prism.js' %}"></script>
